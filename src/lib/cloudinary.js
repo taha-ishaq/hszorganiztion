@@ -6,14 +6,14 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+export default cloudinary;
+
 export async function uploadImage(fileStr) {
-  const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+  return await cloudinary.uploader.upload(fileStr, {
     folder: "hsz-products",
   });
-  return uploadResponse;
 }
 
-// New delete function
 export async function deleteImage(public_id) {
   if (!public_id) return;
   return cloudinary.uploader.destroy(public_id);

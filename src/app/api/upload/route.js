@@ -1,14 +1,16 @@
 // src/app/api/upload/route.js
 import connectDB from "@/lib/mongodb";
-import cloudinary from "@/lib/cloudinary";
+import { v2 as cloudinary } from "cloudinary"; // use v2 directly
 import formidable from "formidable";
 import fs from "fs";
 
-export const runtime = "edge" ? undefined : "nodejs"; // ensure node runtime for formidable
+// Node.js runtime required for formidable
+export const runtime = "nodejs";
 
+// Disable body parsing, Next.js must not parse multipart
 export const config = {
   api: {
-    bodyParser: false, // next.js must not parse body
+    bodyParser: false,
   },
 };
 
@@ -26,15 +28,17 @@ export async function POST(req) {
   try {
     const { files } = await parseForm(req);
     const file = files?.file;
-    if (!file) return new Response(JSON.stringify({ error: "No file" }), { status: 400 });
+    if (!file) {
+      return new Response(JSON.stringify({ error: "No file uploaded" }), { status: 400 });
+    }
 
-    // upload to Cloudinary using path
-    const result = await new Promise((res, rej) => {
+    // Upload to Cloudinary using a stream
+    const result = await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
-        { folder: "hsz_products", resource_type: "image" },
+        { folder: "hsz-products", resource_type: "image" },
         (error, result) => {
-          if (error) return rej(error);
-          res(result);
+          if (error) return reject(error);
+          resolve(result);
         }
       );
       fs.createReadStream(file.filepath).pipe(stream);

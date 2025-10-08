@@ -49,6 +49,12 @@ const About = () => {
             </h3>
             <p>Our team provides personalized technical guidance for every client.</p>
           </div>
+           <div className="bg-white shadow-md p-6 rounded-xl hover:shadow-lg transition">
+            <h3 className="text-xl font-semibold mb-2 text-orange-500">
+              HSZ Engineering Solutions
+            </h3>
+            <p>A trusted Australian supplier of PTFE/Teflon® belts and industrial parts. We proudly supply <span className="text-orange-500 font-bold">Dunlop Flooring</span>, where our belts have proven reliable and cost-effective in demanding production lines</p>
+          </div>
           <div className="bg-white shadow-md p-6 rounded-xl hover:shadow-lg transition">
             <h3 className="text-xl font-semibold mb-2 text-orange-500">
               Fast Delivery

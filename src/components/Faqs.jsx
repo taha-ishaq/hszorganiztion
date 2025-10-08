@@ -30,7 +30,7 @@ export default function FaqsPage() {
   };
 
   return (
-    <section  id="faqs" className="py-24 bg-gray-100 text-gray-800 min-h-screen">
+    <section id="faqs" className="py-24 bg-gray-100 text-gray-800 min-h-screen">
       <div className="max-w-5xl mx-auto px-6 md:px-10">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
@@ -61,7 +61,7 @@ export default function FaqsPage() {
                   opacity: openIndex === i ? 1 : 0,
                   height: openIndex === i ? "auto" : 0,
                 }}
-                className="text-gray-300 mt-2"
+                className="text-black mt-2"
               >
                 {faq.answer}
               </motion.p>

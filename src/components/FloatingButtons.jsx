@@ -37,7 +37,7 @@ const FloatingButtons = () => {
         onMouseLeave={() => setHovered(null)}
       >
         <a
-          href="mailto:info@hszengineering.solutions"
+          href="mailto:sales@hsengineeringsolution.com"
           className="flex items-center gap-3 bg-white text-orange-500 px-5 py-3 rounded-full shadow-lg border border-orange-500 transform transition-all hover:scale-105 hover:bg-orange-500 hover:text-white"
         >
           <FaEnvelope size={26} />

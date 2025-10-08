@@ -49,7 +49,7 @@ export default function ProductsPage() {
   };
 
   return (
-    <section className="py-24 bg-gray-100 text-gray-800 overflow-hidden min-h-screen">
+    <section id="services" className="py-24 bg-gray-100 text-gray-800 overflow-hidden min-h-screen">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}

@@ -111,9 +111,9 @@ export default function ProductsPage() {
                               Detailed specifications available upon request.
                             </p>
                           )}
-                          {p.price && (
+                          {/* {p.price && (
                             <p className="text-orange-500 font-bold mb-3">Price: {p.price}$</p>
-                          )}
+                          )} */}
                           <button
                             onClick={() => window.location.href = "/full-products"}
                             className="mt-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg transition-all"

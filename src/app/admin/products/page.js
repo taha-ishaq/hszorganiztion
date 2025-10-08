@@ -244,9 +244,9 @@ export default function ProductsPage() {
   </p>
 )}
 
-              <p className="text-orange-500 font-semibold mt-3 text-base sm:text-lg">
+              {/* <p className="text-orange-500 font-semibold mt-3 text-base sm:text-lg">
                Price: {p.price}$
-              </p>
+              </p> */}
 
               {/* Edit & Delete Buttons */}
               <div className="mt-4 flex space-x-3 justify-end">

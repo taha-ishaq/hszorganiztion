@@ -120,7 +120,7 @@ export default function OrdersPage() {
                 <th className="p-4">Location</th>
                 <th className="p-4">Product</th>
                 <th className="p-4">Qty</th>
-                <th className="p-4">Price</th>
+                {/* <th className="p-4">Price</th> */}
                 <th className="p-4">Message / Specs</th>
                 <th className="p-4">Status</th>
                 <th className="p-4">Date</th>
@@ -157,9 +157,9 @@ export default function OrdersPage() {
                     <td className="p-4 text-sm font-semibold text-orange-400">
                       {o.amount || 1}
                     </td>
-                    <td className="p-4 text-sm font-semibold text-green-400">
+                    {/* <td className="p-4 text-sm font-semibold text-green-400">
                       ${o.price || 0}
-                    </td>
+                    </td> */}
                     <td className="p-4 text-sm text-gray-300 max-w-[300px] break-words whitespace-pre-wrap">
                       {o.notes || o.message || "-"}
                     </td>

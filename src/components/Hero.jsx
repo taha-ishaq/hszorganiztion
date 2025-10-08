@@ -25,7 +25,7 @@ const Hero = () => {
         </p>
         <div className="flex justify-center space-x-4">
           <a
-            href="#products"
+            href="/full-products"
             className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold transition"
           >
             Explore Products

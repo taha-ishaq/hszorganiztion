@@ -100,7 +100,6 @@ export default function FullProducts() {
 
   return (
     <div>
-    <Navbar/>
     <section className="relative py-24  bg-gray-100 text-gray-800 min-h-screen">
       {/* Background accents */}
       <div className="absolute top-10 left-10 w-72 h-72 bg-orange-500/20 blur-[120px] rounded-full -z-10 animate-pulse" />
@@ -123,12 +122,15 @@ export default function FullProducts() {
   </h3>
 
   {/* Back Button: hide on small screens */}
-  <button
-    onClick={() => window.history.back()}
-    className="mb-4 px-5 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-full text-sm sm:text-base font-semibold transition hidden sm:inline-block"
-  >
-    ← Back
-  </button>
+<button
+  onClick={() => window.history.back()}
+  className="mb-6 px-8 py-3 bg-gradient-to-r from-black via-gray-900 to-orange-600 hover:from-orange-700 hover:via-black hover:to-gray-900 text-white rounded-full text-base sm:text-lg font-semibold tracking-wide transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-[0_0_18px_rgba(255,120,0,0.5)] hidden sm:inline-block"
+>
+  ← Back
+</button>
+
+
+
 
   {/* Mobile Dropdown */}
   <div className="sm:hidden mb-4">
@@ -212,9 +214,9 @@ export default function FullProducts() {
 )}
 
                   </p>
-                  {p.price && (
+                  {/* {p.price && (
                     <p className="text-orange-500 font-bold mb-3">Price :{p.price}$</p>
-                  )}
+                  )} */}
                   <button
                     onClick={() => setSelected(p)}
                     className="mt-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg transition-all"
@@ -313,7 +315,7 @@ export default function FullProducts() {
       disabled={loading}
       className="mt-2 w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg transition-all"
     >
-      {loading ? "Sending..." : "Send Quote"}
+      {loading ? "Sending..." : "Request Quote"}
     </button>
     {message && <p className="text-center mt-2 text-sm">{message}</p>}
   </form>

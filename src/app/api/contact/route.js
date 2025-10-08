@@ -16,7 +16,7 @@ export async function POST(req) {
 
     await transporter.sendMail({
       from: `"Website Contact" <${email}>`,
-      to: "commandergerm@gmail.com",
+      to: "sales@hsengineeringsolution.com",
       subject: `New message from ${name}`,
       text: message,
       html: `<p><strong>Name:</strong> ${name}</p>

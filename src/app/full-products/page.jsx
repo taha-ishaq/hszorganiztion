@@ -17,7 +17,7 @@ export default function FullProducts() {
     email: "",
     phone: "",
     quantity: 1,
-    location: "",
+    customerLocation: "",
     message: "",
   });
   const [loading, setLoading] = useState(false);
@@ -70,7 +70,7 @@ export default function FullProducts() {
         customerName: form.name,
         contactMethod: "phone",
         contactInfo: form.phone,
-        location: form.location,
+        customerLocation: form.customerLocation,
         amount: form.quantity,
         size: "N/A",
         price: selected.price || 0,
@@ -83,7 +83,7 @@ export default function FullProducts() {
         email: "",
         phone: "",
         quantity: 1,
-        location: "",
+        customerLocation: "",
         message: "",
       });
       setTimeout(() => {
@@ -200,12 +200,12 @@ export default function FullProducts() {
                   />
                 </div>
                 <div className="p-5 flex flex-col flex-grow">
-                  <h3 className="text-lg font-semibold text-orange-400 mb-1">{p.name}</h3>
-                  <p className="text-orange-400 text-sm italic mb-2">{p.category}</p>
+                  <h3 className="text-lg font-semibold text-orange-400 mb-1">Name:- {p.name}</h3>
+                  <p className="text-orange-400 text-sm italic mb-2">Category: {p.category}</p>
                   <p className="text-orange-400 text-sm line-clamp-2 mb-3">
                    {p.description && (
   <ul className="text-orange-400 text-sm mb-3 list-disc list-inside line-clamp-3">
-    {p.description.split(",").map((item, idx) => (
+   Descriptions:  {p.description.split(",").map((item, idx) => (
       <li key={idx}>{item.trim()}</li>
     ))}
   </ul>
@@ -213,7 +213,7 @@ export default function FullProducts() {
 
                   </p>
                   {p.price && (
-                    <p className="text-orange-500 font-bold mb-3">${p.price}</p>
+                    <p className="text-orange-500 font-bold mb-3">Price :{p.price}$</p>
                   )}
                   <button
                     onClick={() => setSelected(p)}
@@ -297,8 +297,8 @@ export default function FullProducts() {
     <input
       type="text"
       placeholder="Location"
-      value={form.location}
-      onChange={(e) => setForm({ ...form, location: e.target.value })}
+      value={form.customerLocation}
+      onChange={(e) => setForm({ ...form, customerLocation: e.target.value })}
       className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
     />
     <textarea

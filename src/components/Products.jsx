@@ -93,15 +93,24 @@ export default function ProductsPage() {
                         />
                       </div>
                       <div className="p-5 flex flex-col flex-grow relative z-10">
-                        <h3 className="text-lg font-semibold text-orange-500 mb-1">{p.name}</h3>
+                        <h3 className="text-lg font-semibold text-orange-500 mb-1">Name:- {p.name}</h3>
                         <p className="text-orange-500 font-semibold text-sm mb-2">
-                          {p.category || "General"}
+                         Category: {p.category || "General"}
                         </p>
-                        <p className="text-gray-300 text-sm line-clamp-2 mb-3">
-                          {p.description || "High-quality industrial product."}
-                        </p>
+                       <p className="text-orange-500 font-bold">Descriptions:</p>  {p.description ? (
+  <ul className="text-black text-sm mt-2 list-disc list-inside">
+    {p.description.split(",").map((item, idx) => (
+      <li key={idx}>{item.trim()}</li>
+    ))}
+  </ul>
+) : (
+  <p className="text-gray-400 text-sm text-center mt-2">
+    Detailed specifications available upon request.
+  </p>
+)}
+
                         {p.price && (
-                          <p className="text-orange-500 font-bold mb-3">${p.price}</p>
+                          <p className="text-orange-500 font-bold mb-3">Price: {p.price}$</p>
                         )}
                         <button
                           onClick={() => window.location.href = "/full-products"}

@@ -11,7 +11,7 @@ const OrderSchema = new mongoose.Schema(
       required: true,
     },
     contactInfo: { type: String, required: true },
-    location: String,
+    customerLocation: String,
     amount: { type: Number, default: 1 },
     size: String,
     price: { type: Number, default: 0 }, // ✅ make sure this is included

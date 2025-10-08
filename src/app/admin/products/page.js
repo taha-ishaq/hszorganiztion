@@ -229,14 +229,23 @@ export default function ProductsPage() {
 
             <div className="p-4 sm:p-5 flex flex-col flex-grow">
               <h3 className="text-lg sm:text-xl font-bold text-orange-400 truncate">
-                {p.name}
+               Name:- {p.name}
               </h3>
-              <p className="text-gray-400 text-sm italic mb-2">{p.category}</p> {/* Show category */}
-              <p className="text-gray-300 text-sm sm:text-base mt-1 line-clamp-3 flex-grow">
-                {p.description}
-              </p>
+              <p className="text-gray-400 text-sm italic mb-2"> Category: {p.category}</p> {/* Show category */}
+                {p.description ? (
+  <ul className="text-orange-400 text-sm mt-2 list-disc list-inside">
+   Descriptions:  {p.description.split(",").map((item, idx) => (
+      <li key={idx}>{item.trim()}</li>
+    ))}
+  </ul>
+) : (
+  <p className="text-gray-400 text-sm text-center mt-2">
+    Detailed specifications available upon request.
+  </p>
+)}
+
               <p className="text-orange-500 font-semibold mt-3 text-base sm:text-lg">
-                ${p.price}
+               Price: {p.price}$
               </p>
 
               {/* Edit & Delete Buttons */}

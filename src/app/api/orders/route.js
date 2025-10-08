@@ -20,9 +20,11 @@ export async function POST(req) {
     await connectDB();
     const data = await req.json();
 
+    // Save order with location
     const order = await Order.create({
       ...data,
       status: "pending", // default
+      customerLocation: data.customerLocation || "-", // fallback if not provided
     });
 
     // Prepare email message
@@ -30,6 +32,7 @@ export async function POST(req) {
       <h2>New Order Received!</h2>
       <p><strong>Customer:</strong> ${data.customerName}</p>
       <p><strong>Contact:</strong> ${data.contactMethod} - ${data.contactInfo}</p>
+      <p><strong>Location:</strong> ${data.customerLocation || "-"}</p>
       <p><strong>Product:</strong> ${data.productName}</p>
       <p><strong>Qty:</strong> ${data.amount}</p>
       <p><strong>Price:</strong> $${data.price}</p>
@@ -54,7 +57,12 @@ export async function PATCH(req) {
   await connectDB();
   const data = await req.json();
   if (!data.id) return NextResponse.json({ error: "Missing ID" }, { status: 400 });
-  const updated = await Order.findByIdAndUpdate(data.id, { status: data.status }, { new: true });
+
+  const updated = await Order.findByIdAndUpdate(
+    data.id,
+    { status: data.status },
+    { new: true }
+  );
   return NextResponse.json(updated);
 }
 

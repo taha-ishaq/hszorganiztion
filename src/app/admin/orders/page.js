@@ -152,7 +152,7 @@ export default function OrdersPage() {
                         </span>
                       </div>
                     </td>
-                    <td className="p-4 text-sm">{o.location || "-"}</td>
+                    <td className="p-4 text-sm">{o.customerLocation || "-"}</td>
                     <td className="p-4 text-sm">{o.productName || "-"}</td>
                     <td className="p-4 text-sm font-semibold text-orange-400">
                       {o.amount || 1}

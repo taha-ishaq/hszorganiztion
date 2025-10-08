@@ -258,20 +258,73 @@ export default function FullProducts() {
               </button>
 
               {/* Left: Form */}
-              <div className="flex-1 flex flex-col">
-                <h3 className="text-2xl font-bold text-orange-400 mb-4 text-center md:text-left">
-                  Request a Quote for {selected.name}
-                </h3>
-                <form onSubmit={handleQuoteSubmit} className="space-y-3 flex-1">
-                  {/* form fields here */}
-                </form>
-                <button
-                  onClick={() => setSelected(null)}
-                  className="mt-4 w-full bg-gray-600 hover:bg-gray-500 text-white font-semibold py-2 rounded-lg transition-all"
-                >
-                  Back
-                </button>
-              </div>
+             <div className="flex-1 flex flex-col">
+  <h3 className="text-2xl font-bold text-orange-400 mb-4 text-center md:text-left">
+    Request a Quote for {selected.name}
+  </h3>
+  <form onSubmit={handleQuoteSubmit} className="space-y-3 flex-1">
+    <input
+      type="text"
+      placeholder="Your Name"
+      value={form.name}
+      onChange={(e) => setForm({ ...form, name: e.target.value })}
+      className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+      required
+    />
+    <input
+      type="email"
+      placeholder="Email"
+      value={form.email}
+      onChange={(e) => setForm({ ...form, email: e.target.value })}
+      className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+    />
+    <input
+      type="text"
+      placeholder="Phone"
+      value={form.phone}
+      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+      className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+      required
+    />
+    <input
+      type="number"
+      placeholder="Quantity"
+      value={form.quantity}
+      onChange={(e) => setForm({ ...form, quantity: e.target.value })}
+      className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+      min={1}
+    />
+    <input
+      type="text"
+      placeholder="Location"
+      value={form.location}
+      onChange={(e) => setForm({ ...form, location: e.target.value })}
+      className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+    />
+    <textarea
+      placeholder="Additional Message"
+      value={form.message}
+      onChange={(e) => setForm({ ...form, message: e.target.value })}
+      className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+      rows={3}
+    />
+    <button
+      type="submit"
+      disabled={loading}
+      className="mt-2 w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg transition-all"
+    >
+      {loading ? "Sending..." : "Send Quote"}
+    </button>
+    {message && <p className="text-center mt-2 text-sm">{message}</p>}
+  </form>
+
+  <button
+    onClick={() => setSelected(null)}
+    className="mt-4 w-full bg-gray-600 hover:bg-gray-500 text-white font-semibold py-2 rounded-lg transition-all"
+  >
+    Back
+  </button>
+</div>
 
               {/* Right: Product Preview */}
               <div className="flex-1 hidden md:flex flex-col items-center justify-center bg-white/5 rounded-2xl p-4 border border-white/10">

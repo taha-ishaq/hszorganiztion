@@ -1,15 +1,21 @@
-// src/lib/verifyAdmin.js
-import jwt from "jsonwebtoken";
-const JWT_SECRET = process.env.JWT_SECRET;
+import { jwtVerify } from 'jose';
 
-export function verifyAdminFromReq(req) {
+const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
+
+export async function verifyAdminFromReq(req) {
   try {
     const cookie = req.headers.get("cookie") || "";
-    const tokenMatch = cookie.split(";").map(s => s.trim()).find(s => s.startsWith("token="));
+    // Look for the correct cookie name
+    const tokenMatch = cookie
+      .split(";")
+      .map((s) => s.trim())
+      .find((s) => s.startsWith("admin_token="));
+
     if (!tokenMatch) return null;
+
     const token = tokenMatch.split("=")[1];
-    const decoded = jwt.verify(token, JWT_SECRET);
-    return decoded;
+    const { payload } = await jwtVerify(token, JWT_SECRET);
+    return payload;
   } catch (err) {
     return null;
   }

@@ -62,7 +62,7 @@ const About = () => {
           {[
             {
               title: "Quality Components",
-              desc: "We only source from trusted global manufacturers.",
+              desc: "We only source from trusted manufacturers.",
             },
             {
               title: "Expert Support",

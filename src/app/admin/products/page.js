@@ -27,7 +27,7 @@ export default function ProductsPage() {
         "belts",
         "teflon products",
         "metal belts",
-        "dust collection",
+        "dust filter",
       ]);
     } catch (err) {
       console.error("Failed to load products:", err);

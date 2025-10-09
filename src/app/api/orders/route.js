@@ -29,13 +29,12 @@ export async function POST(req) {
 
     // Prepare email message
     const message = `
-      <h2>New Order Received!</h2>
+      <h2>New Quote Request Received!</h2>
       <p><strong>Customer:</strong> ${data.customerName}</p>
       <p><strong>Contact:</strong> ${data.contactMethod} - ${data.contactInfo}</p>
       <p><strong>Location:</strong> ${data.customerLocation || "-"}</p>
       <p><strong>Product:</strong> ${data.productName}</p>
       <p><strong>Qty:</strong> ${data.amount}</p>
-      <p><strong>Price:</strong> $${data.price}</p>
       <p><strong>Notes:</strong> ${data.notes || "-"}</p>
       <p><strong>Status:</strong> Pending</p>
     `;

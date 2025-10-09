@@ -11,7 +11,7 @@ export async function GET() {
     "belts",
     "teflon products",
     "metal belts",
-    "dust collection",
+    "dust filter",
   ];
   return Response.json({ products, categories });
 }

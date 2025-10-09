@@ -22,7 +22,7 @@ const ProductSchema = new mongoose.Schema({
       "belts",
       "teflon products",
       "metal belts",
-      "dust collection",
+      "dust filter",
     ],
     required: true,
   },

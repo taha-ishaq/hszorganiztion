@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
+import Link from "next/link";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -114,12 +115,12 @@ export default function ProductsPage() {
                           {/* {p.price && (
                             <p className="text-orange-500 font-bold mb-3">Price: {p.price}$</p>
                           )} */}
-                          <button
-                            onClick={() => window.location.href = "/full-products"}
-                            className="mt-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg transition-all"
+                          <Link
+                            href={`/product/${p._id}`}
+                            className="mt-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg transition-all text-center"
                           >
                             Get a Quote
-                          </button>
+                          </Link>
                         </div>
                       </motion.div>
                     ))}
@@ -156,12 +157,12 @@ export default function ProductsPage() {
                         </p>
                       )}
                       {p.price && <p className="text-orange-500 font-bold mb-3">Price: {p.price}$</p>}
-                      <button
-                        onClick={() => window.location.href = "/full-products"}
-                        className="mt-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg"
+                      <Link
+                        href={`/product/${p._id}`}
+                        className="mt-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg text-center"
                       >
                         Get a Quote
-                      </button>
+                      </Link>
                     </div>
                   ))}
                 </div>

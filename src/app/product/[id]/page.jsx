@@ -101,51 +101,58 @@ export default function ProductDetails() {
     );
 
   return (
-
-    <section className="relative min-h-screen w-full flex flex-col items-center justify-start px-4 sm:px-6 lg:px-10 py-20 bg-gray-100 text-gray-800 overflow-hidden">
-     <button
-    onClick={() => window.history.back()}
-    className="mb-6 px-8 py-3 bg-gradient-to-r from-black via-gray-900 to-orange-600 hover:from-orange-700 hover:via-black hover:to-gray-900 text-white rounded-full text-base sm:text-lg font-semibold tracking-wide transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-[0_0_18px_rgba(255,120,0,0.5)] hidden sm:inline-block"
+    <section className="relative min-h-screen w-full flex flex-col items-center justify-start px-3 xs:px-4 sm:px-6 lg:px-8 xl:px-10 py-8 sm:py-12 md:py-16 lg:py-20 bg-gray-100 text-gray-800 overflow-hidden">
+      {/* Back Button - Visible on all screens except extra small */}
+      <button
+        onClick={() => window.history.back()}
+        className="mb-4 sm:mb-6 px-4 sm:px-6 md:px-8 py-2 sm:py-3 bg-gradient-to-r from-black via-gray-900 to-orange-600 hover:from-orange-700 hover:via-black hover:to-gray-900 text-white rounded-full text-sm xs:text-base sm:text-lg font-semibold tracking-wide transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-[0_0_18px_rgba(255,120,0,0.5)] w-auto self-start"
       >
-    ← Back
-       </button>
-      {/* background glow */}
-      <div className="absolute top-10 left-20 w-72 h-72 bg-orange-500/20 blur-3xl rounded-full animate-pulse"></div>
-      <div className="absolute bottom-20 right-20 w-72 h-72 bg-gray-600/30 blur-3xl rounded-full animate-pulse"></div>
+        ← Back
+      </button>
 
-      <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
-        {/* 🖼️ Product Details */}
-        <div className="flex flex-col items-start">
-          <div className="relative w-full h-[480px] rounded-2xl overflow-hidden shadow-[0_0_25px_rgba(255,140,0,0.3)] border border-orange-600/30">
+      {/* Background glow effects */}
+      <div className="absolute top-5 sm:top-10 left-5 sm:left-10 md:left-20 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-orange-500/20 blur-2xl sm:blur-3xl rounded-full animate-pulse"></div>
+      <div className="absolute bottom-5 sm:bottom-10 right-5 sm:right-10 md:right-20 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 bg-gray-600/30 blur-2xl sm:blur-3xl rounded-full animate-pulse"></div>
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-20 items-start">
+        {/* 🖼️ Product Details Section */}
+        <div className="flex flex-col items-start w-full">
+          {/* Product Image */}
+          <div className="relative w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[480px] rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_0_15px_rgba(255,140,0,0.3)] sm:shadow-[0_0_25px_rgba(255,140,0,0.3)] border border-orange-600/30">
             <Image
               src={getImageSrc(product)}
               alt={product.name}
               fill
               className="object-cover"
               priority
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
             />
           </div>
 
-          <h1 className="text-5xl font-extrabold mt-8 text-orange-500">
-            {product.name}
-          </h1>
+          {/* Product Info */}
+          <div className="w-full mt-4 sm:mt-6 md:mt-8">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-orange-500 leading-tight">
+              {product.name}
+            </h1>
 
-          <p className="text-gray-700 mt-5 text-lg leading-relaxed">
-            {product.description || "No description available for this product."}
-          </p>
+            <p className="text-gray-700 mt-3 sm:mt-4 md:mt-5 text-sm sm:text-base md:text-lg leading-relaxed">
+              {product.description || "No description available for this product."}
+            </p>
+          </div>
         </div>
 
-        {/* 🧾 Quote Form */}
-        <div className="bg-white shadow-2xl rounded-2xl p-8 border border-gray-200">
-          <h2 className="text-3xl font-bold mb-6 text-gray-800">
+        {/* 🧾 Quote Form Section */}
+        <div className="bg-white shadow-lg sm:shadow-xl md:shadow-2xl rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-gray-200 w-full">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-5 md:mb-6 text-gray-800">
             Request a Quote
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 md:space-y-5">
+            {/* Name Field */}
             <input
               type="text"
               placeholder="Your Name"
-              className="w-full p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black"
+              className="w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black text-sm sm:text-base"
               value={formData.customerName}
               onChange={(e) =>
                 setFormData({ ...formData, customerName: e.target.value })
@@ -153,10 +160,11 @@ export default function ProductDetails() {
               required
             />
 
+            {/* Email Field */}
             <input
               type="email"
               placeholder="Your Email (e.g., example@gmail.com)"
-              className="w-full p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black"
+              className="w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black text-sm sm:text-base"
               value={formData.contactInfo}
               onChange={(e) =>
                 setFormData({ ...formData, contactInfo: e.target.value })
@@ -164,10 +172,11 @@ export default function ProductDetails() {
               required
             />
 
+            {/* Phone Field */}
             <input
               type="text"
               placeholder="Your Phone Number"
-              className="w-full p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black"
+              className="w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black text-sm sm:text-base"
               value={formData.phone}
               onChange={(e) =>
                 setFormData({ ...formData, phone: e.target.value })
@@ -175,10 +184,11 @@ export default function ProductDetails() {
               required
             />
 
+            {/* Location Field */}
             <input
               type="text"
               placeholder="Your Location"
-              className="w-full p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black"
+              className="w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black text-sm sm:text-base"
               value={formData.customerLocation}
               onChange={(e) =>
                 setFormData({ ...formData, customerLocation: e.target.value })
@@ -186,11 +196,12 @@ export default function ProductDetails() {
               required
             />
 
+            {/* Quantity Field */}
             <input
               type="number"
               min="1"
               placeholder="Quantity"
-              className="w-full p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black"
+              className="w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black text-sm sm:text-base"
               value={formData.amount}
               onChange={(e) =>
                 setFormData({
@@ -200,19 +211,21 @@ export default function ProductDetails() {
               }
             />
 
+            {/* Message Textarea */}
             <textarea
               placeholder="Additional Message"
-              rows={4}
-              className="w-full p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black resize-none"
+              rows={3}
+              className="w-full p-2 sm:p-3 bg-white border border-gray-300 rounded-lg focus:border-orange-500 outline-none text-black text-sm sm:text-base resize-none"
               value={formData.notes}
               onChange={(e) =>
                 setFormData({ ...formData, notes: e.target.value })
               }
             />
 
+            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-orange-600 to-gray-900 hover:from-orange-500 hover:to-gray-800 text-white py-3 rounded-lg font-semibold tracking-wide shadow-[0_0_15px_rgba(255,140,0,0.3)] hover:shadow-[0_0_25px_rgba(255,140,0,0.6)] transition-all duration-300"
+              className="w-full bg-gradient-to-r from-orange-600 to-gray-900 hover:from-orange-500 hover:to-gray-800 text-white py-2 sm:py-3 rounded-lg font-semibold tracking-wide text-sm sm:text-base shadow-[0_0_10px_rgba(255,140,0,0.3)] sm:shadow-[0_0_15px_rgba(255,140,0,0.3)] hover:shadow-[0_0_20px_rgba(255,140,0,0.6)] transition-all duration-300"
             >
               Submit Quote
             </button>
